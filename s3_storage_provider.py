@@ -122,6 +122,7 @@ class S3StorageProviderBackend(StorageProvider):
 
         def _store_file():
             with LoggingContext(parent_context=parent_logcontext):
+                logger.info("filename %s", os.path.join(self.cache_directory, path))
                 self._get_s3_client().upload_file(
                     Filename=os.path.join(self.cache_directory, path),
                     Bucket=self.bucket,
